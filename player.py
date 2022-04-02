@@ -5,9 +5,9 @@ from datetime import date
 import random
 
 class Player():
-    def __init__(self, id, uid, ban, nickname, race, health, maxhealth, level, xp, maxxp, gold, silver, copper, dater):
+    def __init__(self, id, uid, ban, nickname, race, health, maxhealth, level, xp, maxxp, gold, silver, copper, dater, donate):
         self.id = id
-        self.uid = gid
+        self.uid = uid
         self.ban = ban
         self.nickname = nickname
         self.race = race
@@ -20,6 +20,7 @@ class Player():
         self.silver = silver
         self.copper = copper
         self.dater = dater
+        self.donate = donate
 
     @staticmethod
     def create_profile(id, nick):
@@ -37,7 +38,7 @@ class Player():
         else:
             racer = "Человек"
         daterr = date.today()
-        cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 100, 100, 1, 0, 100, 0, 0, 0, daterr))
+        cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 100, 100, 1, 0, 100, 0, 0, 0, daterr, "Нет"))
         cur.execute("UPDATE ids SET uids=uids+1")
         db.commit()
         return racer
@@ -51,4 +52,4 @@ class Player():
         if i == None:
             return False
         if i != None:
-            return Player(i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10], i[11], i[12], i[13])
+            return Player(i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10], i[11], i[12], i[13], i[14])
