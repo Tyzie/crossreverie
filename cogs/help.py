@@ -1,0 +1,12 @@
+from vkbottle.bot import Blueprint, Message
+from player import Player
+from config import mainkeyb
+
+cog = Blueprint("Help")
+cog.labeler.vbml_ignore_case = True
+
+@cog.on.message(text=["помощь"])
+async def help(message: Message):
+	user = await cog.api.users.get(message.from_id)
+	await message.answer(f"Тест", keyboard=mainkeyb)
+	
