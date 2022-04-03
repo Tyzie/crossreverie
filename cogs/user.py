@@ -2,11 +2,11 @@ from vkbottle.bot import Blueprint, Message
 from player import Player
 from config import mainkeyb
 
-cog = Blueprint("Help")
+cog = Blueprint("User")
 cog.labeler.vbml_ignore_case = True
 
 @cog.on.message(text=["профиль"])
-async def help(message: Message):
+async def profile(message: Message):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)
 	if player != False and player.race == "Человек":
@@ -44,3 +44,4 @@ async def help(message: Message):
 	&#12288;💼 Бизнес: скоро!
 
 Дата регистрации в боте: {player.dater} ⌚""")
+	print(f"{player.nickname} {player.uid} called 'profile'")

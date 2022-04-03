@@ -12,4 +12,5 @@ async def help(message: Message):
 	await message.answer(f"""Мои команды, [id{player.id}|{player.nickname}] [{player.uid}]
 		&#12288;Профиль
 		&#12288;Помощь""", keyboard=mainkeyb)
+	print(f"{player.nickname} {player.uid} called 'help'")
 	
