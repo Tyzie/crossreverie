@@ -36,17 +36,21 @@ async def keyb_off(message: Message):
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты выключил клавиатуру в боте! ❌", keyboard=EMPTY_KEYBOARD)
 		print(f"{player.nickname} [{player.uid}] called 'keyb_off'")
 
-@cog.on.message(text=["ник <text>"])
+@cog.on.message(text=["ник <text>", "ник"])
 async def set_nick(message: Message, text=None):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)
 	if player != False and text == None and player.keyb == 1:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ник не может быть пустым! ❌", keyboard=mainkeyb)
+		print(f"{player.nickname} [{player.uid}] called 'set_nick' nick: {text}")
 	if player != False and text == None and player.keyb == 0:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ник не может быть пустым! ❌", keyboard=EMPTY_KEYBOARD)
+		print(f"{player.nickname} [{player.uid}] called 'set_nick' nick: {text}")
 	if player != False and text != None and player.keyb == 1:
 		Player.set_nick(player.uid, text)
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], твой новый ник: {text}! ✔", keyboard=mainkeyb)
+		print(f"{player.nickname} [{player.uid}] called 'set_nick' nick: {text}")
 	if player != False and text != None and player.keyb == 0:
 		Player.set_nick(player.uid, text)
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], твой новый ник: {text}! ✔", keyboard=EMPTY_KEYBOARD)
+		print(f"{player.nickname} [{player.uid}] called 'set_nick' nick: {text}")

@@ -14,14 +14,16 @@ async def help(message: Message):
 			&#12288;Профиль
 			&#12288;Помощь
 			&#12288;⚙ Настройки
-			&#12288;Ник [новый ник]""", keyboard=mainkeyb)
+			&#12288;Ник [новый ник]
+			&#12288;Заработок""", keyboard=mainkeyb)
 		print(f"{player.nickname} [{player.uid}] called 'help'")
 	if player != False and player.keyb == 0:
 		await message.answer(f"""Мои команды, [id{player.id}|{player.nickname}] [{player.uid}]
 			&#12288;Профиль
 			&#12288;Помощь
 			&#12288;⚙ Настройки
-			&#12288;Ник [новый ник]""", keyboard=EMPTY_KEYBOARD)
+			&#12288;Ник [новый ник]
+			&#12288;Заработок""", keyboard=EMPTY_KEYBOARD)
 		print(f"{player.nickname} [{player.uid}] called 'help'")
 	# 100m = 1s 1g = 100s
 	

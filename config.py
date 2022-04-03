@@ -7,7 +7,7 @@ mainkeyb = (
     Keyboard(one_time=False, inline=False)
     .add(Text("Профиль"), color=KeyboardButtonColor.SECONDARY)
     .add(Text("Магазин"), color=KeyboardButtonColor.NEGATIVE)
-    .add(Text("Заработок"), color=KeyboardButtonColor.NEGATIVE)
+    .add(Text("Заработок"), color=KeyboardButtonColor.SECONDARY)
     .add(Text("Магия"), color=KeyboardButtonColor.NEGATIVE)
     .row()
     .add(Text("Имущество"), color=KeyboardButtonColor.NEGATIVE)
@@ -26,6 +26,21 @@ setkeyb = (
     Keyboard(inline=True)
     .add(Text("Клавиатура вкл"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Клавиатура выкл"), color=KeyboardButtonColor.NEGATIVE)
+    .get_json()
+)
+
+earnkeyb = (
+    Keyboard(inline=True)
+    .add(Text("Работы"), color=KeyboardButtonColor.NEGATIVE)
+    .add(Text("Биржа"), color=KeyboardButtonColor.NEGATIVE)
+    .row()
+    .add(Text("Обменник валют"), color=KeyboardButtonColor.PRIMARY)
+    .add(Text("Рабы"), color=KeyboardButtonColor.NEGATIVE)
+    .get_json()
+)
+convkeyb = (
+    Keyboard(inline=True)
+    .add(Text("🟧 в ⬜"), color=KeyboardButtonColor.POSITIVE)
     .get_json()
 )
 
