@@ -90,7 +90,7 @@ class Player():
         cur.execute(f"SELECT copper FROM users WHERE uid='{id}'")
         i = cur.fetchone()
         if i[0] >= float(numb):
-            cur.execute(f"UPDATE users SET silver=silver+'{numb}'/100 WHERE uid='{id}'")
+            cur.execute(f"UPDATE users SET silver='{numb}'/100+silver WHERE uid='{id}'")
             cur.execute(f"UPDATE users SET copper=copper-'{numb}' WHERE uid='{id}'")
             db.commit()
         if i[0] < float(numb):
