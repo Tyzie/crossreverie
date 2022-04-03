@@ -1,6 +1,6 @@
 from vkbottle.bot import Blueprint, Message
 from player import Player
-from config import mainkeyb
+from config import mainkeyb, EMPTY_KEYBOARD
 
 cog = Blueprint("Registration")
 cog.labeler.vbml_ignore_case = True
@@ -17,5 +17,5 @@ async def reg(message: Message, text='CrossReverie Player'):
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты уже зарегестрирован в боте! ❌", keyboard=mainkeyb)
 		print(f"{player.nickname} [{player.uid}] called 'reg'")
 	if player != False and player.keyb == 0:
-		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты уже зарегестрирован в боте! ❌")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты уже зарегестрирован в боте! ❌", keyboard=EMPTY_KEYBOARD)
 		print(f"{player.nickname} [{player.uid}] called 'reg'")

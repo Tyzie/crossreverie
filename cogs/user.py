@@ -1,6 +1,6 @@
 from vkbottle.bot import Blueprint, Message
 from player import Player
-from config import mainkeyb
+from config import mainkeyb, EMPTY_KEYBOARD
 
 cog = Blueprint("User")
 cog.labeler.vbml_ignore_case = True
@@ -97,7 +97,7 @@ async def profile(message: Message):
 	&#12288;🐎 Конь: скоро!
 	&#12288;💼 Бизнес: скоро!
 
-Дата регистрации в боте: {player.dater} ⌚""")
+Дата регистрации в боте: {player.dater} ⌚""", keyboard=EMPTY_KEYBOARD)
 	if player != False and player.race == "Демон" and player.keyb == 0:
 		await message.answer(f"""Твой профиль, [id{player.id}|{player.nickname}] [{player.uid}]
 📒 Игровой ID: {player.uid} 
@@ -115,7 +115,7 @@ async def profile(message: Message):
 	&#12288;🐎 Конь: скоро!
 	&#12288;💼 Бизнес: скоро!
 
-Дата регистрации в боте: {player.dater} ⌚""")
+Дата регистрации в боте: {player.dater} ⌚""", keyboard=EMPTY_KEYBOARD)
 	if player != False and player.race == "Эльф" and player.keyb == 0:
 		await message.answer(f"""Твой профиль, [id{player.id}|{player.nickname}] [{player.uid}]
 📒 Игровой ID: {player.uid} 
@@ -133,7 +133,7 @@ async def profile(message: Message):
 	&#12288;🐎 Конь: скоро!
 	&#12288;💼 Бизнес: скоро!
 
-Дата регистрации в боте: {player.dater} ⌚""")
+Дата регистрации в боте: {player.dater} ⌚""", keyboard=EMPTY_KEYBOARD)
 	if player != False and player.race == "Ангел" and player.keyb == 0:
 		await message.answer(f"""Твой профиль, [id{player.id}|{player.nickname}] [{player.uid}]
 📒 Игровой ID: {player.uid} 
@@ -151,5 +151,5 @@ async def profile(message: Message):
 	&#12288;🐎 Конь: скоро!
 	&#12288;💼 Бизнес: скоро!
 
-Дата регистрации в боте: {player.dater} ⌚""")
+Дата регистрации в боте: {player.dater} ⌚""", keyboard=EMPTY_KEYBOARD)
 	print(f"{player.nickname} [{player.uid}] called 'profile'")

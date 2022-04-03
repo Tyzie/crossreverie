@@ -1,6 +1,6 @@
 from vkbottle.bot import Blueprint, Message
 from player import Player
-from config import mainkeyb, setkeyb
+from config import mainkeyb, setkeyb, EMPTY_KEYBOARD
 
 cog = Blueprint("Settings")
 cog.labeler.vbml_ignore_case = True
@@ -31,4 +31,4 @@ async def keyb_on(message: Message):
 	player = Player.get_profile(user[0].id)
 	if player != False:
 		Player.keyb(player.uid, 0)
-		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты выключил клавиатуру в боте! ❌")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты выключил клавиатуру в боте! ❌", keyboard=EMPTY_KEYBOARD)

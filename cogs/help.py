@@ -1,6 +1,6 @@
 from vkbottle.bot import Blueprint, Message
 from player import Player
-from config import mainkeyb
+from config import mainkeyb, EMPTY_KEYBOARD
 
 cog = Blueprint("Help")
 cog.labeler.vbml_ignore_case = True
@@ -21,7 +21,7 @@ async def help(message: Message):
 			&#12288;Профиль
 			&#12288;Помощь
 			&#12288;⚙ Настройки
-			&#12288;Ник [новый ник]""")
+			&#12288;Ник [новый ник]""", keyboard=EMPTY_KEYBOARD)
 		print(f"{player.nickname} [{player.uid}] called 'help'")
 	# 100m = 1s 1g = 100s
 	
