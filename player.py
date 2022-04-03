@@ -76,3 +76,9 @@ class Player():
         cur = db.cursor()
         cur.execute(f"UPDATE users SET keyb='{ke}' WHERE uid='{id}'")
         db.commit()
+
+    def set_nick(id, nick):
+        db = ps.connect(DB_URI, sslmode="require")
+        cur = db.cursor()
+        cur.execute(f"UPDATE users SET nickname='{nick}' WHERE uid='{id}'")
+        db.commit()
