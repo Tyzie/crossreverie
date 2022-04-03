@@ -152,4 +152,6 @@ async def profile(message: Message):
 	&#12288;💼 Бизнес: скоро!
 
 Дата регистрации в боте: {player.dater} ⌚""", keyboard=EMPTY_KEYBOARD)
+	if player != False:
+		Player.set_action(player.uid, "main")
 	print(f"{player.nickname} [{player.uid}] called 'profile'")
