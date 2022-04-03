@@ -11,7 +11,7 @@ async def reg(message: Message, text='CrossReverie Player'):
 	player = Player.get_profile(user[0].id)
 	if player != False:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты уже зарегестрирован в боте! ❌")
-		print(f"{player.nickname} {player.uid} called 'reg'")
+		print(f"{player.nickname} [{player.uid}] called 'reg'")
 	if player == False:
 		race = Player.create_profile(user[0].id, text)
 		await message.answer(f"[id{user[0].id}|{user[0].first_name}], ты успешно зарегестрировался! Твоя раса в этом мире: {race} 🌍")

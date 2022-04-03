@@ -16,10 +16,8 @@ mainkeyb = (
     .row()
     .add(Text("Инвентарь"), color=KeyboardButtonColor.SECONDARY)
     .add(Text("Топ"), color=KeyboardButtonColor.NEGATIVE)
-    .row()
     .add(Text("Помощь"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Настройки"), color=KeyboardButtonColor.PRIMARY)
-    .add(Text("Информация"), color=KeyboardButtonColor.SECONDARY)
     .get_json()
 )
 

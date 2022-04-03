@@ -25,7 +25,7 @@ async def profile(message: Message):
 	&#12288;🐎 Конь: скоро!
 	&#12288;💼 Бизнес: скоро!
 
-Дата регистрации в боте: {player.dater} ⌚""")
+Дата регистрации в боте: {player.dater} ⌚""", keyboard=mainkeyb)
 	if player != False and player.race == "Демон":
 		await message.answer(f"""Твой профиль, [id{player.id}|{player.nickname}] [{player.uid}]
 📒 Игровой ID: {player.uid} 
@@ -43,5 +43,5 @@ async def profile(message: Message):
 	&#12288;🐎 Конь: скоро!
 	&#12288;💼 Бизнес: скоро!
 
-Дата регистрации в боте: {player.dater} ⌚""")
-	print(f"{player.nickname} {player.uid} called 'profile'")
+Дата регистрации в боте: {player.dater} ⌚""", keyboard=mainkeyb)
+	print(f"{player.nickname} [{player.uid}] called 'profile'")
