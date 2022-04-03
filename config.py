@@ -27,4 +27,5 @@ setkeyb = (
     .add(Text("Клавиатура вкл"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Клавиатура выкл"), color=KeyboardButtonColor.NEGATIVE)
     .get_json()
+)
 
