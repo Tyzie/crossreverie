@@ -59,7 +59,7 @@ class Player():
     def get_profile(id):
         db = ps.connect(DB_URI, sslmode="require")
         cur = db.cursor()
-        cur.execute(f"SELECT gold, silver, copper, xp, maxxp, health, maxhealth FROM users WHERE id='{id}'")
+        cur.execute(f"SELECT gold, silver, copper, xp, maxxp, health, maxhealth, level FROM users WHERE id='{id}'")
         g = cur.fetchone()
         s = round(g[1], 1)
         cur.execute(f"UPDATE users SET silver='{s}' WHERE id='{id}'")
@@ -67,6 +67,9 @@ class Player():
             cur.execute(f"UPDATE users SET xp=0 WHERE id='{id}'")
             cur.execute(f"UPDATE users SET maxxp=maxxp*2 WHERE id='{id}'")
             cur.execute(f"UPDATE users SET level=level+1 WHERE id='{id}'")
+            cur.execute(f"UPDATE users SET maxhealth=maxhealth+10 WHERE id='{id}'")
+            cop = 200 * g[7]
+            cur.execute(f"UPDATE users SET copper=copper+'{cop}' WHERE id='{id}'")
         if g[5] > g[6]:
             cur.execute(f"UPDATE users SET health=maxhealth WHERE id='{id}'")
         db.commit()
