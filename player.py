@@ -64,6 +64,15 @@ class Player():
         s = round(g[1], 1)
         cur.execute(f"UPDATE users SET silver='{s}' WHERE id='{id}'")
         db.commit()
+        if g[3] >= g[4]:
+            cur.execute(f"UPDATE users SET xp=0 WHERE id='{id}'")
+            cur.execute(f"UPDATE users SET maxxp=maxxp*2 WHERE id='{id}'")
+            cur.execute(f"UPDATE users SET maxhealth=maxhealth+5 WHERE id='{id}'")
+            cur.execute(f"UPDATE users SET level=level+1 WHERE id='{id}'")
+            db.commit()
+        if g[5] > g[6]:
+            cur.execute(f"UPDATE users SET health=maxhealth WHERE id='{id}'")
+            db.commit()
         cur.execute(f"SELECT * FROM users WHERE id='{id}'")
         i = cur.fetchone()
         if i == None:
