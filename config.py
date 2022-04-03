@@ -12,7 +12,7 @@ mainkeyb = (
     .row()
     .add(Text("Имущество"), color=KeyboardButtonColor.NEGATIVE)
     .add(Text("Бизнес"), color=KeyboardButtonColor.NEGATIVE)
-    .add(Text("Казино"), color=KeyboardButtonColor.NEGATIVE)
+    .add(Text("Развлечения"), color=KeyboardButtonColor.SECONDARY)
     .add(Text("Карта"), color=KeyboardButtonColor.NEGATIVE)
     .row()
     .add(Text("🎒"), color=KeyboardButtonColor.NEGATIVE)
@@ -43,4 +43,11 @@ convkeyb = (
     .add(Text("🟧 в ⬜"), color=KeyboardButtonColor.POSITIVE)
     .get_json()
 )
+
+entkeyb = (
+    Keyboard(inline=True)
+    .add(Text("Казино"), color=KeyboardButtonColor.NEGATIVE)
+    .add(Text("Путешествия"), color=KeyboardButtonColor.NEGATIVE)
+    .get_json()
+    )
 
