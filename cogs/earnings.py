@@ -63,27 +63,6 @@ async def bronze_silver(message: Message):
 		Player.set_action(player.uid, "bronze_silver")
 		print(f"{player.nickname} [{player.uid}] called 'bronze_silver'")
 
-@cog.on.message(text="<numb>")
-async def conv(message: Message, numb=None):
-	user = await cog.api.users.get(message.from_id)
-	player = Player.get_profile(user[0].id)
-	if player != False and player.action == "bronze_silver" and player.keyb == 1:
-		i = Player.bronze_silver(player.uid, numb)
-		if i != False:
-			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты обменял {numb} 🟧 в серебро ⬜!", keyboard=mainkeyb)
-		if i == False:
-			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает меди 🟧 для обмена! ❌", keyboard=mainkeyb)
-		Player.set_action(player.uid, "main")
-		print(f"{player.nickname} [{player.uid}] called 'conv_bs' numb: {numb}")
-	if player != False and player.action == "bronze_silver" and player.keyb == 0:
-		i = Player.bronze_silver(player.uid, numb)
-		if i != False:
-			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты обменял {numb} 🟧 в серебро ⬜!", keyboard=EMPTY_KEYBOARD)
-		if i == False:
-			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает меди 🟧 для обмена! ❌", keyboard=EMPTY_KEYBOARD)
-		Player.set_action(player.uid, "main")
-		print(f"{player.nickname} [{player.uid}] called 'conv_bs' numb: {numb}")
-
 @cog.on.message(text=["работы"])
 async def jobs(message: Message):
 	user = await cog.api.users.get(message.from_id)
@@ -91,7 +70,7 @@ async def jobs(message: Message):
 	if player != False and player.action == "earn" and player.keyb == 1:
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}], здесь ты можешь подобрать себе работу:
 			=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-			Уборщик | Время: 5 секунд ⌚ | Медь: 1-3 🟧 | Опыт: 0-1 ⭐""", keyboard=convkeyb)
+			Уборщик | Время: 5 секунд ⌚ | Медь: 1-3 🟧 | Опыт: 0-1 ⭐""", keyboard=jobskeyb)
 		Player.set_action(player.uid, "jobs")
 		print(f"{player.nickname} [{player.uid}] called 'jobs'")
 	if player != False and player.action == "earn" and player.keyb == 0:
@@ -113,3 +92,24 @@ async def cleaner(message: Message):
 		i = Player.job(player.uid, 1)
 		await message.answer(f"{i[0]}, {i[1]}")
 		Player.set_action(player.uid, "main")
+
+@cog.on.message(text="<numb>")
+async def conv(message: Message, numb=None):
+	user = await cog.api.users.get(message.from_id)
+	player = Player.get_profile(user[0].id)
+	if player != False and player.action == "bronze_silver" and player.keyb == 1:
+		i = Player.bronze_silver(player.uid, numb)
+		if i != False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты обменял {numb} 🟧 в серебро ⬜!", keyboard=mainkeyb)
+		if i == False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает меди 🟧 для обмена! ❌", keyboard=mainkeyb)
+		Player.set_action(player.uid, "main")
+		print(f"{player.nickname} [{player.uid}] called 'conv_bs' numb: {numb}")
+	if player != False and player.action == "bronze_silver" and player.keyb == 0:
+		i = Player.bronze_silver(player.uid, numb)
+		if i != False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты обменял {numb} 🟧 в серебро ⬜!", keyboard=EMPTY_KEYBOARD)
+		if i == False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает меди 🟧 для обмена! ❌", keyboard=EMPTY_KEYBOARD)
+		Player.set_action(player.uid, "main")
+		print(f"{player.nickname} [{player.uid}] called 'conv_bs' numb: {numb}")
