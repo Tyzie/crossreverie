@@ -1,6 +1,6 @@
 from vkbottle.bot import Blueprint, Message
 from player import Player
-from config import mainkeyb, earnkeyb, convkeyb, jobskeyb, EMPTY_KEYBOARD
+from config import mainkeyb, earnkeyb, convkeyb, jobskeyb, choicekeyb, EMPTY_KEYBOARD
 import asyncio
 
 cog = Blueprint("Earnings")
@@ -85,13 +85,65 @@ async def cleaner(message: Message):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)
 	if player != False and player.action == "jobs" and player.keyb == 1:
-		await message.answer(f"Ты взял в руки метлу")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}] взял в руки метлу 🧹")
 		await asyncio.sleep(1)
-		await message.answer(f"Ты начал подметать комнату")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}] начал подметать комнату 🧹")
 		await asyncio.sleep(4)
 		i = Player.job(player.uid, 1)
-		await message.answer(f"{i[0]}, {i[1]}")
+		Player.set_action(player.uid, "cleaner")
+		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}] получил: 
+			| Опыт: +{i[0]} ⭐
+			| Медь: +{i[1]} 🟧 
+			Продолжить?""", keyboard=choicekeyb)
+	if player != False and player.action == "jobs" and player.keyb == 0:
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}] взял в руки метлу 🧹")
+		await asyncio.sleep(1)
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}] начал подметать комнату 🧹")
+		await asyncio.sleep(4)
+		i = Player.job(player.uid, 1)
+		Player.set_action(player.uid, "cleaner")
+		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}] получил: 
+			| Опыт: +{i[0]} ⭐
+			| Медь: +{i[1]} 🟧 
+			Продолжить?""", keyboard=EMPTY_KEYBOARD)
+
+@cog.on.message(text=["да"])
+async def choice_yes(message: Message):
+	user = await cog.api.users.get(message.from_id)
+	player = Player.get_profile(user[0].id)
+	if player != False and player.action == "cleaner" and player.keyb == 1:
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}] взял в руки метлу 🧹")
+		await asyncio.sleep(1)
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}] начал подметать комнату 🧹")
+		await asyncio.sleep(4)
+		i = Player.job(player.uid, 1)
+		Player.set_action(player.uid, "cleaner")
+		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}] получил: 
+			| Опыт: +{i[0]} ⭐
+			| Медь: +{i[1]} 🟧 
+			Продолжить?""", keyboard=choicekeyb)
+	if player != False and player.action == "cleaner" and player.keyb == 0:
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}] взял в руки метлу 🧹")
+		await asyncio.sleep(1)
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}] начал подметать комнату 🧹")
+		await asyncio.sleep(4)
+		i = Player.job(player.uid, 1)
+		Player.set_action(player.uid, "cleaner")
+		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}] получил: 
+			| Опыт: +{i[0]} ⭐
+			| Медь: +{i[1]} 🟧 
+			Продолжить?""", keyboard=EMPTY_KEYBOARD)
+
+@cog.on.message(text=["нет"])
+async def choice_no(message: Message):
+	user = await cog.api.users.get(message.from_id)
+	player = Player.get_profile(user[0].id)
+	if player != False and player.action == "cleaner" and player.keyb == 1:
 		Player.set_action(player.uid, "main")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], приходи еще, работа всегда найдется!", keyboard=mainkeyb)
+	if player != False and player.action == "cleaner" and player.keyb == 0:
+		Player.set_action(player.uid, "main")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], приходи еще, работа всегда найдется!", keyboard=EMPTY_KEYBOARD)
 
 @cog.on.message(text="<numb>")
 async def conv(message: Message, numb=None):

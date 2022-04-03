@@ -46,6 +46,13 @@ convkeyb = (
 jobskeyb = (
     Keyboard(inline=True)
     .add(Text("Уборщик"), color=KeyboardButtonColor.POSITIVE)
+    .get_json()
+    )
+choicekeyb = (
+    Keyboard(inline=True)
+    .add(Text("Да"), color=KeyboardButtonColor.POSITIVE)
+    .add(Text("Нет"), color=KeyboardButtonColor.NEGATIVE)
+    .get_json()
     )
 
 entkeyb = (
