@@ -39,7 +39,7 @@ async def keyb_off(message: Message):
 		Player.set_action(player.uid, "main")
 		print(f"{player.nickname} [{player.uid}] called 'keyb_off'")
 
-@cog.on.message(text=["ник <text>", "ник"])
+@cog.on.message(text=["ник <text>", "ник", "👤 ник", "👤 ник <text>"])
 async def set_nick(message: Message, text=None):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)

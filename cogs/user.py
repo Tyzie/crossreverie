@@ -5,7 +5,7 @@ from config import mainkeyb, EMPTY_KEYBOARD
 cog = Blueprint("User")
 cog.labeler.vbml_ignore_case = True
 
-@cog.on.message(text=["профиль"])
+@cog.on.message(text=["профиль", "👤 профиль"])
 async def profile(message: Message):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)

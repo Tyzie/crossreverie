@@ -5,19 +5,19 @@ token = "e455d14cca6615a47f3a23e185776230a820ea79b7320ccc444ed95385941b5450d9450
 
 mainkeyb = (
     Keyboard(one_time=False, inline=False)
-    .add(Text("Профиль"), color=KeyboardButtonColor.SECONDARY)
+    .add(Text("👤 Профиль"), color=KeyboardButtonColor.SECONDARY)
     .add(Text("Магазин"), color=KeyboardButtonColor.NEGATIVE)
-    .add(Text("Заработок"), color=KeyboardButtonColor.SECONDARY)
+    .add(Text("💼 Заработок"), color=KeyboardButtonColor.SECONDARY)
     .add(Text("Магия"), color=KeyboardButtonColor.NEGATIVE)
     .row()
     .add(Text("Имущество"), color=KeyboardButtonColor.NEGATIVE)
     .add(Text("Бизнес"), color=KeyboardButtonColor.NEGATIVE)
-    .add(Text("Развлечения"), color=KeyboardButtonColor.SECONDARY)
+    .add(Text("😄 Развлечения"), color=KeyboardButtonColor.SECONDARY)
     .add(Text("Карта"), color=KeyboardButtonColor.NEGATIVE)
     .row()
     .add(Text("🎒"), color=KeyboardButtonColor.NEGATIVE)
     .add(Text("Топ"), color=KeyboardButtonColor.NEGATIVE)
-    .add(Text("Помощь"), color=KeyboardButtonColor.PRIMARY)
+    .add(Text("📜 Помощь"), color=KeyboardButtonColor.PRIMARY)
     .add(Text("⚙"), color=KeyboardButtonColor.PRIMARY)
     .get_json()
 )
@@ -31,7 +31,7 @@ setkeyb = (
 
 earnkeyb = (
     Keyboard(inline=True)
-    .add(Text("Работы"), color=KeyboardButtonColor.NEGATIVE)
+    .add(Text("Работы"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Биржа"), color=KeyboardButtonColor.NEGATIVE)
     .row()
     .add(Text("Обменник валют"), color=KeyboardButtonColor.PRIMARY)
