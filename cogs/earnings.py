@@ -1,6 +1,7 @@
 from vkbottle.bot import Blueprint, Message
 from player import Player
-from config import mainkeyb, earnkeyb, convkeyb, EMPTY_KEYBOARD
+from config import mainkeyb, earnkeyb, convkeyb, jobkeyb, EMPTY_KEYBOARD
+import asyncio
 
 cog = Blueprint("Earnings")
 cog.labeler.vbml_ignore_case = True
@@ -11,12 +12,14 @@ async def earnings(message: Message):
 	player = Player.get_profile(user[0].id)
 	if player != False and player.action == "main" and player.keyb == 1:
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}], тебе доступны данные способы заработка:
-			Обменник валют - здесь ты можешь обменять нужную тебе валюту на другую""", keyboard=earnkeyb)
+			Обменник валют - здесь ты можешь обменять нужную тебе валюту на другую ⭐
+			Работы - здесь есть вакансии для того, что получить немного ресурсов!""", keyboard=earnkeyb)
 		Player.set_action(player.uid, "earn")
 		print(f"{player.nickname} [{player.uid}] called 'earnings'")
 	if player != False and player.action == "main" and player.keyb == 0:
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}], тебе доступны данные способы заработка:
-			Обменник валют - здесь ты можешь обменять нужную тебе валюту на другую ⭐""", keyboard=EMPTY_KEYBOARD)
+			Обменник валют - здесь ты можешь обменять нужную тебе валюту на другую ⭐
+			Работы - здесь есть вакансии для того, что получить немного ресурсов!""", keyboard=EMPTY_KEYBOARD)
 		Player.set_action(player.uid, "earn")
 		print(f"{player.nickname} [{player.uid}] called 'earnings'")
 
@@ -80,3 +83,33 @@ async def conv(message: Message, numb=None):
 			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает меди 🟧 для обмена! ❌", keyboard=EMPTY_KEYBOARD)
 		Player.set_action(player.uid, "main")
 		print(f"{player.nickname} [{player.uid}] called 'conv_bs' numb: {numb}")
+
+@cog.on.message(text=["работы"])
+async def jobs(message: Message):
+	user = await cog.api.users.get(message.from_id)
+	player = Player.get_profile(user[0].id)
+	if player != False and player.action == "earn" and player.keyb == 1:
+		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}], здесь ты можешь подобрать себе работу:
+			=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+			Уборщик | Время: 5 секунд ⌚ | Медь: 1-3 🟧 | Опыт: 0-1 ⭐""", keyboard=convkeyb)
+		Player.set_action(player.uid, "jobs")
+		print(f"{player.nickname} [{player.uid}] called 'jobs'")
+	if player != False and player.action == "earn" and player.keyb == 0:
+		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}], здесь ты можешь подобрать себе работу:
+			=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+			Уборщик | Время: 5 секунд ⌚ | Медь: 1-3 🟧 | Опыт: 0-1 ⭐""", keyboard=EMPTY_KEYBOARD)
+		Player.set_action(player.uid, "jobs")
+		print(f"{player.nickname} [{player.uid}] called 'jobs'")
+
+@cog.on.message(text=["уборщик"])
+async def cleaner(message: Message):
+	user = await cog.api.users.get(message.from_id)
+	player = Player.get_profile(user[0].id)
+	if player != False and player.action == "jobs" and player.keyb == 1:
+		await message.answer(f"Ты взял в руки метлу")
+		await asyncio.sleep(1)
+		await message.answer(f"Ты начал подметать комнату")
+		await asyncio.sleep(4)
+		i = Player.job(player.uid, 1)
+		await message.answer(f"{i[0]}, {i[1]}")
+		Player.set_action(player.uid, "main")

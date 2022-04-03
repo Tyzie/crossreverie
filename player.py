@@ -3,6 +3,7 @@ from config import DB_URI
 import random
 from datetime import date
 import random
+import asyncio
 
 class Player():
     def __init__(self, id, uid, ban, nickname, race, health, maxhealth, level, xp, maxxp, gold, silver, copper, dater, donate, manna, maxmanna, action, keyb):
@@ -94,3 +95,14 @@ class Player():
             db.commit()
         if i[0] < float(numb):
             return False
+
+    def job(id, jid):
+        db = ps.connect(DB_URI, sslmode="require")
+        cur = db.cursor()
+        if jid == 1:
+            x = random.randint(0,1)
+            m = random.randint(1,3)
+            cur.execute(f"UPDATE users SET xp=xp+'{x}' WHERE uid='{id}'")
+            cur.execute(f"UPDATE users SET copper=copper+'{m}' WHERE uid='{id}'")
+            db.commit()
+            return x, m
