@@ -43,13 +43,13 @@ class Player():
             racer = "Человек"
         daterr = date.today()
         if racer == "Человек":
-            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 250, 250, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", "true"))
+            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 250, 250, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
         if racer == "Демон":
-            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 1000, 1000, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", "true"))
+            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 1000, 1000, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
         if racer == "Ангел":
-            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 750, 750, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", "true"))
+            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 750, 750, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
         if racer == "Эльф":
-            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 500, 500, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", "true"))
+            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 500, 500, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
         cur.execute("UPDATE ids SET uids=uids+1")
         db.commit()
         return racer

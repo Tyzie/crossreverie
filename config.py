@@ -4,7 +4,7 @@ DB_URI = "postgres://zixigujjprjyih:1a1bf09ccde0e5eba271a5b48e0dfeb04e63f8ec03fe
 token = "e455d14cca6615a47f3a23e185776230a820ea79b7320ccc444ed95385941b5450d94504122a8adcd6b6d"
 
 mainkeyb = (
-    Keyboard(one_time=False, inline=False)
+    Keyboard(one_time=True, inline=False)
     .add(Text("Профиль"), color=KeyboardButtonColor.SECONDARY)
     .add(Text("Магазин"), color=KeyboardButtonColor.NEGATIVE)
     .add(Text("Заработок"), color=KeyboardButtonColor.NEGATIVE)

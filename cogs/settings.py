@@ -22,13 +22,13 @@ async def keyb_on(message: Message):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)
 	if player != False:
-		Player.keyb(player.uid, "true")
-		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты включил клавиатуру в боте! ✔")
+		Player.keyb(player.uid, 1)
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты включил клавиатуру в боте! ✔", keyboard=mainkeyb)
 
 @cog.on.message(text=["клавиатура выкл"])
 async def keyb_on(message: Message):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)
 	if player != False:
-		Player.keyb(player.uid, "false")
+		Player.keyb(player.uid, 0)
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты выключил клавиатуру в боте! ❌")
