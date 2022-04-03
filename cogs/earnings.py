@@ -1,6 +1,6 @@
 from vkbottle.bot import Blueprint, Message
 from player import Player
-from config import mainkeyb, earnkeyb, convkeyb, jobkeyb, EMPTY_KEYBOARD
+from config import mainkeyb, earnkeyb, convkeyb, jobskeyb, EMPTY_KEYBOARD
 import asyncio
 
 cog = Blueprint("Earnings")
