@@ -66,7 +66,6 @@ class Player():
         if g[3] >= g[4]:
             cur.execute(f"UPDATE users SET xp=0 WHERE id='{id}'")
             cur.execute(f"UPDATE users SET maxxp=maxxp*2 WHERE id='{id}'")
-            cur.execute(f"UPDATE users SET maxhealth=maxhealth+5 WHERE id='{id}'")
             cur.execute(f"UPDATE users SET level=level+1 WHERE id='{id}'")
         if g[5] > g[6]:
             cur.execute(f"UPDATE users SET health=maxhealth WHERE id='{id}'")
