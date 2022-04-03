@@ -59,6 +59,11 @@ class Player():
     def get_profile(id):
         db = ps.connect(DB_URI, sslmode="require")
         cur = db.cursor()
+        cur.execute(f"SELECT gold, silver, copper, xp, maxxp, health, maxhealth FROM users WHERE id='{id}'")
+        g = cur.fetchone()
+        s = round(g[1], 1)
+        cur.execute(f"UPDATE users SET silver='{s}' WHERE id='{id}'")
+        db.commit()
         cur.execute(f"SELECT * FROM users WHERE id='{id}'")
         i = cur.fetchone()
         if i == None:
@@ -91,8 +96,7 @@ class Player():
         i = cur.fetchone()
         if i[0] >= float(numb):
             x = float(numb)/100
-
-            cur.execute(f"UPDATE users SET silver=silver+'{round(x, 1)}' WHERE uid='{id}'")
+            cur.execute(f"UPDATE users SET silver=silver+'{d}' WHERE uid='{id}'")
             cur.execute(f"UPDATE users SET copper=copper-'{numb}' WHERE uid='{id}'")
             db.commit()
         if i[0] < float(numb):
