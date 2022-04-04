@@ -121,3 +121,10 @@ class Player():
             cur.execute(f"UPDATE users SET copper=copper+'{m}' WHERE uid='{id}'")
             db.commit()
             return x, m
+
+    def top(numb):
+        db = ps.connect(DB_URI, sslmode="require")
+        cur = db.cursor()
+        cur.execute(f"SELECT copper, uid, id FROM users LIMIT '{numb}'")
+        i = cur.fetchone()
+        return i
