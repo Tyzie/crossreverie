@@ -12,7 +12,8 @@ async def top(message: Message):
 	if player != False and player.keyb == 1:
 		i = Player.top(10)
 		await message.answer(f"""Топ тест:
-{i}""", keyboard=mainkeyb)
+1 - {i[0]}
+2 - {i[1]}""", keyboard=mainkeyb)
 		print(i)
 		Player.set_action(player.uid, "main")
 		print(f"{player.nickname} [{player.uid}] called 'help'")
