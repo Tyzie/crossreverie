@@ -122,16 +122,16 @@ class Player():
             db.commit()
             return x, m
 
-    def top(numb, txt):
+    def top_copper(numb):
         db = ps.connect(DB_URI, sslmode="require")
         cur = db.cursor()
-        cur.execute(f"SELECT '{txt}' FROM users ORDER BY '{txt}' DESC LIMIT '{numb}'")
+        cur.execute(f"SELECT copper FROM users ORDER BY copper DESC LIMIT '{numb}'")
         i = cur.fetchall()
         return i
 
-    def top_uid(numb, txt):
+    def top_copper_uid(numb, txt):
         db = ps.connect(DB_URI, sslmode="require")
         cur = db.cursor()
-        cur.execute(f"SELECT uid FROM users ORDER BY '{txt}' DESC LIMIT '{numb}'")
+        cur.execute(f"SELECT uid FROM users ORDER BY copper DESC LIMIT '{numb}'")
         i = cur.fetchall()
         return i
