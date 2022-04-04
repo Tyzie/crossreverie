@@ -126,5 +126,5 @@ class Player():
         db = ps.connect(DB_URI, sslmode="require")
         cur = db.cursor()
         cur.execute(f"SELECT copper, uid, id FROM users LIMIT '{numb}'")
-        i = cur.fetchone()
+        i = cur.fetchall()
         return i
