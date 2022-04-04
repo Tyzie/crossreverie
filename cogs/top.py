@@ -10,10 +10,11 @@ async def top(message: Message):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)
 	if player != False and player.keyb == 1:
-		i = Player.top(10)
-		await message.answer(f"""Топ тест:
-1 - {i[0]}
-2 - {i[1]}""", keyboard=mainkeyb)
+		i = Player.top(10, "copper")
+		g = Player.top_uid(10, "copper")
+		await message.answer(f"""Топ игроков по меди 🟧:
+1 - {i[0]} [{g[0]}]
+2 - {i[1]} [{g[1]}]""", keyboard=mainkeyb)
 		print(i)
 		Player.set_action(player.uid, "main")
-		print(f"{player.nickname} [{player.uid}] called 'help'")
+		print(f"{player.nickname} [{player.uid}] called 'top'")
