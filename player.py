@@ -121,19 +121,3 @@ class Player():
             cur.execute(f"UPDATE users SET copper=copper+'{m}' WHERE uid='{id}'")
             db.commit()
             return x, m
-
-    def top_copper(numb):
-        db = ps.connect(DB_URI, sslmode="require")
-        cur = db.cursor()
-        cur.execute(f"SELECT copper FROM users ORDER BY copper DESC LIMIT '{numb}'")
-        for i in cur.fetchone():
-            g = i[0]
-            g1 = i[1]
-            return g, g1
-
-    def top_copper_uid(numb):
-        db = ps.connect(DB_URI, sslmode="require")
-        cur = db.cursor()
-        cur.execute(f"SELECT uid FROM users ORDER BY copper DESC LIMIT '{numb}'")
-        i = cur.fetchall()
-        return i
