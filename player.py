@@ -126,9 +126,10 @@ class Player():
         db = ps.connect(DB_URI, sslmode="require")
         cur = db.cursor()
         cur.execute(f"SELECT copper FROM users ORDER BY copper DESC LIMIT '{numb}'")
-        i = cur.fetchall()
-        for i in range(0, 2):
-            return i
+        for i in cur.fetchall():
+            g = i[0]
+            g1 = i[1]
+            return g, g1
 
     def top_copper_uid(numb):
         db = ps.connect(DB_URI, sslmode="require")
