@@ -8,7 +8,6 @@ import asyncio
 bot = Bot(token)
 
 for cog in load_blueprints_from_package("cogs"):
-	asyncio.sleep(1)
     cog.load(bot)
 
 bot.run_forever()
