@@ -12,6 +12,7 @@ api = API(token)
 
 for cog in load_blueprints_from_package("cogs"):
     cog.load(bot)
+    print(cog)
 
 class SomeResponseValidator(ABCResponseValidator):
     async def validate(self, response: dict) -> Union[Any, NoReturn]:
