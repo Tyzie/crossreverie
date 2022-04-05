@@ -77,6 +77,8 @@ class Player():
         i = cur.fetchone()
         if i == None:
             return False
+        if i[2] == "true":
+            return False
         if i != None:
             return Player(i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10], i[11], i[12], i[13], i[14], i[15], i[16], i[17], i[18])
 
@@ -128,3 +130,15 @@ class Player():
             cur.execute(f"UPDATE users SET copper=copper+'{m}' WHERE uid='{id}'")
             db.commit()
             return x, m
+
+    def casino(id, idc, numb):
+        db = ps.connect(DB_URI, sslmode="require")
+        cur = db.cursor()
+        if idc == 1:
+            x = random.randint(0,1)
+            if x == 0:
+                cur.execute(f"UPDATE users SET copper=copper-'{numb}' WHERE uid='{id}'")
+                return 0
+            if x == 1:
+                cur.execute(f"UPDATE users SET copper=copper+'{numb}' WHERE uid='{id}'")
+                return 1

@@ -33,7 +33,7 @@ async def profile(message: Message):
 📒 Игровой ID: {player.uid} 
 💜 Здоровье: {player.health}/{player.maxhealth}
 😈 Игровая раса: {player.race}
-⚛ Манна: скоро!
+⚛ Манна: {player.manna}/{player.maxmanna}
 💠 Уровень: {player.level}
 ⭐ Опыт: {player.xp}/{player.maxxp} 
 🟨 Золото: {player.gold}
@@ -53,7 +53,7 @@ async def profile(message: Message):
 📒 Игровой ID: {player.uid} 
 💚 Здоровье: {player.health}/{player.maxhealth}
 🌲 Игровая раса: {player.race}
-⚛ Манна: скоро!
+⚛ Манна: {player.manna}/{player.maxmanna}
 🔮 Уровень: {player.level}
 ⭐ Опыт: {player.xp}/{player.maxxp} 
 🟨 Золото: {player.gold}
@@ -73,7 +73,7 @@ async def profile(message: Message):
 📒 Игровой ID: {player.uid} 
 🤍 Здоровье: {player.health}/{player.maxhealth}
 ☁ Игровая раса: {player.race}
-⚛ Манна: скоро!
+⚛ Манна: {player.manna}/{player.maxmanna}
 💠 Уровень: {player.level}
 ⭐ Опыт: {player.xp}/{player.maxxp} 
 🟨 Золото: {player.gold}
@@ -113,7 +113,7 @@ async def profile(message: Message):
 📒 Игровой ID: {player.uid} 
 💜 Здоровье: {player.health}/{player.maxhealth}
 😈 Игровая раса: {player.race}
-⚛ Манна: скоро!
+⚛ Манна: {player.manna}/{player.maxmanna}
 💠 Уровень: {player.level}
 ⭐ Опыт: {player.xp}/{player.maxxp} 
 🟨 Золото: {player.gold}
@@ -133,7 +133,7 @@ async def profile(message: Message):
 📒 Игровой ID: {player.uid} 
 💚 Здоровье: {player.health}/{player.maxhealth}
 🌲 Игровая раса: {player.race}
-⚛ Манна: скоро!
+⚛ Манна: {player.manna}/{player.maxmanna}
 🔮 Уровень: {player.level}
 ⭐ Опыт: {player.xp}/{player.maxxp} 
 🟨 Золото: {player.gold}
@@ -153,7 +153,7 @@ async def profile(message: Message):
 📒 Игровой ID: {player.uid} 
 🤍 Здоровье: {player.health}/{player.maxhealth}
 ☁ Игровая раса: {player.race}
-⚛ Манна: скоро!
+⚛ Манна: {player.manna}/{player.maxmanna}
 💠 Уровень: {player.level}
 ⭐ Опыт: {player.xp}/{player.maxxp} 
 🟨 Золото: {player.gold}

@@ -58,8 +58,13 @@ choicekeyb = (
 
 entkeyb = (
     Keyboard(inline=True)
-    .add(Text("Казино"), color=KeyboardButtonColor.NEGATIVE)
+    .add(Text("Казино"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Путешествия"), color=KeyboardButtonColor.NEGATIVE)
+    .get_json()
+    )
+casinokeyb = (
+    Keyboard(inline=True)
+    .add(Text("🟧"), color=KeyboardButtonColor.POSITIVE)
     .get_json()
     )
 
