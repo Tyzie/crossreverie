@@ -207,6 +207,12 @@ async def choice_no(message: Message):
 	if player != False and player.action == "cleaner" and player.keyb == 0:
 		Player.set_action(player.uid, "main")
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], приходи еще, работа всегда найдется!", keyboard=EMPTY_KEYBOARD)
+	if player != False and player.action == "salesman" and player.keyb == 1:
+		Player.set_action(player.uid, "main")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], приходи еще, работа всегда найдется!", keyboard=mainkeyb)
+	if player != False and player.action == "salesman" and player.keyb == 0:
+		Player.set_action(player.uid, "main")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], приходи еще, работа всегда найдется!", keyboard=EMPTY_KEYBOARD)
 
 @cog.on.message(text="<numb>")
 async def conv(message: Message, numb=None):

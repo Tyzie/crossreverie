@@ -24,6 +24,8 @@ async def profile(message: Message):
 &#12288;🏠 Дом: скоро!
 &#12288;🐎 Конь: скоро!
 &#12288;💼 Бизнес: скоро!
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+🔥 Донат: {player.donate}
 
 Дата регистрации в боте: {player.dater} ⌚""", keyboard=mainkeyb)
 	if player != False and player.race == "Демон" and player.keyb == 1:
@@ -42,6 +44,8 @@ async def profile(message: Message):
 &#12288;🏠 Дом: скоро!
 &#12288;🐎 Конь: скоро!
 &#12288;💼 Бизнес: скоро!
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+🔥 Донат: {player.donate}
 
 Дата регистрации в боте: {player.dater} ⌚""", keyboard=mainkeyb)
 	if player != False and player.race == "Эльф" and player.keyb == 1:
@@ -60,6 +64,8 @@ async def profile(message: Message):
 &#12288;🏠 Дом: скоро!
 &#12288;🐎 Конь: скоро!
 &#12288;💼 Бизнес: скоро!
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+🔥 Донат: {player.donate}
 
 Дата регистрации в боте: {player.dater} ⌚""", keyboard=mainkeyb)
 	if player != False and player.race == "Ангел" and player.keyb == 1:
@@ -78,6 +84,8 @@ async def profile(message: Message):
 &#12288;🏠 Дом: скоро!
 &#12288;🐎 Конь: скоро!
 &#12288;💼 Бизнес: скоро!
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+🔥 Донат: {player.donate}
 
 Дата регистрации в боте: {player.dater} ⌚""", keyboard=mainkeyb)
 
@@ -96,6 +104,8 @@ async def profile(message: Message):
 &#12288;🏠 Дом: скоро!
 &#12288;🐎 Конь: скоро!
 &#12288;💼 Бизнес: скоро!
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+🔥 Донат: {player.donate}
 
 Дата регистрации в боте: {player.dater} ⌚""", keyboard=EMPTY_KEYBOARD)
 	if player != False and player.race == "Демон" and player.keyb == 0:
@@ -114,6 +124,8 @@ async def profile(message: Message):
 &#12288;🏠 Дом: скоро!
 &#12288;🐎 Конь: скоро!
 &#12288;💼 Бизнес: скоро!
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+🔥 Донат: {player.donate}
 
 Дата регистрации в боте: {player.dater} ⌚""", keyboard=EMPTY_KEYBOARD)
 	if player != False and player.race == "Эльф" and player.keyb == 0:
@@ -132,6 +144,8 @@ async def profile(message: Message):
 &#12288;🏠 Дом: скоро!
 &#12288;🐎 Конь: скоро!
 &#12288;💼 Бизнес: скоро!
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+🔥 Донат: {player.donate}
 
 Дата регистрации в боте: {player.dater} ⌚""", keyboard=EMPTY_KEYBOARD)
 	if player != False and player.race == "Ангел" and player.keyb == 0:
@@ -150,6 +164,8 @@ async def profile(message: Message):
 &#12288;🏠 Дом: скоро!
 &#12288;🐎 Конь: скоро!
 &#12288;💼 Бизнес: скоро!
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+🔥 Донат: {player.donate}
 
 Дата регистрации в боте: {player.dater} ⌚""", keyboard=EMPTY_KEYBOARD)
 	if player != False:
