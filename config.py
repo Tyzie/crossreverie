@@ -30,7 +30,7 @@ setkeyb = (
 )
 
 earnkeyb = (
-    Keyboard(inline=True)
+    Keyboard(one_time=True, inline=False)
     .add(Text("Работы"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Биржа"), color=KeyboardButtonColor.NEGATIVE)
     .row()
@@ -46,6 +46,7 @@ convkeyb = (
 jobskeyb = (
     Keyboard(inline=True)
     .add(Text("Уборщик"), color=KeyboardButtonColor.POSITIVE)
+    .add(Text("Продавец"), color=KeyboardButtonColor.POSITIVE)
     .get_json()
     )
 choicekeyb = (

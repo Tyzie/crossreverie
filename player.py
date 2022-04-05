@@ -121,3 +121,10 @@ class Player():
             cur.execute(f"UPDATE users SET copper=copper+'{m}' WHERE uid='{id}'")
             db.commit()
             return x, m
+        if jid == 2:
+            x = random.randint(0,2)
+            m = random.randint(1,5)
+            cur.execute(f"UPDATE users SET xp=xp+'{x}' WHERE uid='{id}'")
+            cur.execute(f"UPDATE users SET copper=copper+'{m}' WHERE uid='{id}'")
+            db.commit()
+            return x, m
