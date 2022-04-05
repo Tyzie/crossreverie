@@ -4,10 +4,11 @@ from config import token, DB_URI
 import os
 import time
 import asyncio
+from .cogs import bps
 
 bot = Bot(token)
 
-for cog in load_blueprints_from_package("cogs"):
+for cog in bps:
     cog.load(bot)
 
 bot.run_forever()
