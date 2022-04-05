@@ -138,7 +138,9 @@ class Player():
             x = random.randint(0,1)
             if x == 0:
                 cur.execute(f"UPDATE users SET copper=copper-'{numb}' WHERE uid='{id}'")
+                db.commit()
                 return 0
             if x == 1:
                 cur.execute(f"UPDATE users SET copper=copper+'{numb}' WHERE uid='{id}'")
+                db.commit()
                 return 1

@@ -58,7 +58,19 @@ async def copper_casino_numb(message: Message, numb=None):
 		i = Player.casino(player.uid, 1, numb)
 		if i == 0:
 			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты проиграл {numb} меди 🟧! ❌", keyboard=mainkeyb)
+			Player.set_action(player.uid, "main")
 			print(f"{player.nickname} [{player.uid}] called 'copper_casino_numb' numb: {numb}")
 		if i == 1:
 			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты победил и получил {numb} меди 🟧! ✔", keyboard=mainkeyb)
+			Player.set_action(player.uid, "main")
+			print(f"{player.nickname} [{player.uid}] called 'copper_casino_numb' numb: {numb}")
+	if player != False and player.action == "copper_casino" and player.keyb == 0:
+		i = Player.casino(player.uid, 1, numb)
+		if i == 0:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты проиграл {numb} меди 🟧! ❌", keyboard=EMPTY_KEYBOARD)
+			Player.set_action(player.uid, "main")
+			print(f"{player.nickname} [{player.uid}] called 'copper_casino_numb' numb: {numb}")
+		if i == 1:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты победил и получил {numb} меди 🟧! ✔", keyboard=EMPTY_KEYBOARD)
+			Player.set_action(player.uid, "main")
 			print(f"{player.nickname} [{player.uid}] called 'copper_casino_numb' numb: {numb}")
