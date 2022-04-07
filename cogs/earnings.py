@@ -214,7 +214,7 @@ async def choice_no(message: Message):
 		Player.set_action(player.uid, "main")
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], приходи еще, работа всегда найдется!", keyboard=EMPTY_KEYBOARD)
 
-@cog.on.message(text="<numb>")
+#@cog.on.message(text="<numb>")
 async def conv(message: Message, numb=None):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)

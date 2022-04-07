@@ -50,7 +50,7 @@ async def copper_casino(message: Message):
 		Player.set_action(player.uid, "copper_casino")
 		print(f"{player.nickname} [{player.uid}] called 'copper_casino'")
 
-@cog.on.message(text=['<numb>'])
+#@cog.on.message(text=['<numb>'])
 async def copper_casino_numb(message: Message, numb=None):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)
