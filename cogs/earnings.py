@@ -23,7 +23,7 @@ async def earnings(message: Message):
 		Player.set_action(player.uid, "earn")
 		print(f"{player.nickname} [{player.uid}] called 'earnings'")
 
-@cog.on.message(text=["обменник валют"])
+#@cog.on.message(text=["обменник валют"])
 async def converter(message: Message):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)
