@@ -44,13 +44,13 @@ class Player():
             racer = "Человек"
         daterr = date.today()
         if racer == "Человек":
-            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 250, 250, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
+            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], 0, nick, racer, 250, 250, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
         if racer == "Демон":
-            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 1000, 1000, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
+            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], 0, nick, racer, 1000, 1000, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
         if racer == "Ангел":
-            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 750, 750, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
+            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], 0, nick, racer, 750, 750, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
         if racer == "Эльф":
-            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], "false", nick, racer, 500, 500, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
+            cur.execute("INSERT INTO users VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, ids[0], 0, nick, racer, 500, 500, 1, 0, 8, 0, 0, 0, daterr, "Нет", 0, 1000, "main", 1))
         cur.execute("UPDATE ids SET uids=uids+1")
         db.commit()
         return racer
@@ -77,7 +77,7 @@ class Player():
         i = cur.fetchone()
         if i == None:
             return False
-        if i[2] == "true":
+        if i[2] == 1:
             return False
         if i != None:
             return Player(i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10], i[11], i[12], i[13], i[14], i[15], i[16], i[17], i[18])

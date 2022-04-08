@@ -34,13 +34,13 @@ earnkeyb = (
     .add(Text("Работы"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Биржа"), color=KeyboardButtonColor.NEGATIVE)
     .row()
-    .add(Text("Обменник валют"), color=KeyboardButtonColor.PRIMARY)
+    .add(Text("Обменник валют(сломался)"), color=KeyboardButtonColor.NEGATIVE)
     .add(Text("Рабы"), color=KeyboardButtonColor.NEGATIVE)
     .get_json()
 )
 convkeyb = (
     Keyboard(inline=True)
-    .add(Text("🟧 в ⬜"), color=KeyboardButtonColor.POSITIVE)
+    .add(Text("🟧 в ⬜ 100"), color=KeyboardButtonColor.POSITIVE)
     .get_json()
 )
 jobskeyb = (
@@ -58,13 +58,8 @@ choicekeyb = (
 
 entkeyb = (
     Keyboard(inline=True)
-    .add(Text("Казино"), color=KeyboardButtonColor.POSITIVE)
+    .add(Text("Казино"), color=KeyboardButtonColor.NEGATIVE)
     .add(Text("Путешествия"), color=KeyboardButtonColor.NEGATIVE)
-    .get_json()
-    )
-casinokeyb = (
-    Keyboard(inline=True)
-    .add(Text("🟧"), color=KeyboardButtonColor.POSITIVE)
     .get_json()
     )
 

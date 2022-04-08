@@ -34,7 +34,7 @@ async def converter(message: Message):
 			1 ⬜ = 100 🟧
 			-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 			Доступные команды:
-			🟧 в ⬜
+			🟧 в ⬜ [колличество]
 			""", keyboard=convkeyb)
 		Player.set_action(player.uid, "conv")
 		print(f"{player.nickname} [{player.uid}] called 'converter'")
@@ -45,23 +45,31 @@ async def converter(message: Message):
 			1 ⬜ = 100 🟧
 			-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 			Доступные команды:
-			🟧 в ⬜
+			🟧 в ⬜ [колличество]
 			""", keyboard=EMPTY_KEYBOARD)
 		Player.set_action(player.uid, "conv")
 		print(f"{player.nickname} [{player.uid}] called 'converter'")
 
-@cog.on.message(text=["🟧 в ⬜"])
-async def bronze_silver(message: Message):
+@cog.on.message(text=["🟧 в ⬜ <numb>", "🟧 в ⬜"])
+async def bronze_silver(message: Message, numb=100):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)
 	if player != False and player.action == "conv" and player.keyb == 1:
-		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}], укажи сколько ты хочешь обменять:""", keyboard=mainkeyb)
-		Player.set_action(player.uid, "bronze_silver")
-		print(f"{player.nickname} [{player.uid}] called 'bronze_silver'")
+		i = Player.bronze_silver(player.uid, numb)
+		if i != False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты обменял {numb} 🟧 в серебро ⬜!", keyboard=mainkeyb)
+		if i == False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает меди 🟧 для обмена! ❌", keyboard=mainkeyb)
+		Player.set_action(player.uid, "main")
+		print(f"{player.nickname} [{player.uid}] called 'bronze_silver' numb: {numb}")
 	if player != False and player.action == "conv" and player.keyb == 0:
-		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}], укажи сколько ты хочешь обменять:""", keyboard=EMPTY_KEYBOARD)
-		Player.set_action(player.uid, "bronze_silver")
-		print(f"{player.nickname} [{player.uid}] called 'bronze_silver'")
+		i = Player.bronze_silver(player.uid, numb)
+		if i != False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты обменял {numb} 🟧 в серебро ⬜!", keyboard=EMPTY_KEYBOARD)
+		if i == False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает меди 🟧 для обмена! ❌", keyboard=EMPTY_KEYBOARD)
+		print(f"{player.nickname} [{player.uid}] called 'bronze_silver' numb: {numb}")
+		Player.set_action(player.uid, "main")
 
 @cog.on.message(text=["работы"])
 async def jobs(message: Message):
@@ -213,24 +221,3 @@ async def choice_no(message: Message):
 	if player != False and player.action == "salesman" and player.keyb == 0:
 		Player.set_action(player.uid, "main")
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], приходи еще, работа всегда найдется!", keyboard=EMPTY_KEYBOARD)
-
-#@cog.on.message(text="<numb>")
-async def conv(message: Message, numb=None):
-	user = await cog.api.users.get(message.from_id)
-	player = Player.get_profile(user[0].id)
-	if player != False and player.action == "bronze_silver" and player.keyb == 1:
-		i = Player.bronze_silver(player.uid, numb)
-		if i != False:
-			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты обменял {numb} 🟧 в серебро ⬜!", keyboard=mainkeyb)
-		if i == False:
-			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает меди 🟧 для обмена! ❌", keyboard=mainkeyb)
-		Player.set_action(player.uid, "main")
-		print(f"{player.nickname} [{player.uid}] called 'conv_bs' numb: {numb}")
-	if player != False and player.action == "bronze_silver" and player.keyb == 0:
-		i = Player.bronze_silver(player.uid, numb)
-		if i != False:
-			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты обменял {numb} 🟧 в серебро ⬜!", keyboard=EMPTY_KEYBOARD)
-		if i == False:
-			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает меди 🟧 для обмена! ❌", keyboard=EMPTY_KEYBOARD)
-		Player.set_action(player.uid, "main")
-		print(f"{player.nickname} [{player.uid}] called 'conv_bs' numb: {numb}")

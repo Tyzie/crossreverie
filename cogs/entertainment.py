@@ -1,6 +1,6 @@
 from vkbottle.bot import Blueprint, Message
 from player import Player
-from config import mainkeyb, entkeyb, casinokeyb, EMPTY_KEYBOARD
+from config import mainkeyb, entkeyb, EMPTY_KEYBOARD
 
 cog = Blueprint("Entertainment")
 cog.labeler.vbml_ignore_case = True
