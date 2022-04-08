@@ -43,6 +43,7 @@ earnkeyb = (
 convkeyb = (
     Keyboard(inline=True)
     .add(Text("🟧 в ⬜ 100"), color=KeyboardButtonColor.POSITIVE)
+    .add(Text("⬜ в 🟨 100"), color=KeyboardButtonColor.POSITIVE)
     .get_json()
 )
 jobskeyb = (
