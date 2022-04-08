@@ -20,7 +20,7 @@ mainkeyb = (
     .add(Text("📜 Помощь"), color=KeyboardButtonColor.PRIMARY)
     .add(Text("⚙"), color=KeyboardButtonColor.PRIMARY)
     .row()
-    .add(Text("🔰 Информация"). color=KeyboardButtonColor.POSITIVE)
+    .add(Text("🔰 Информация"), color=KeyboardButtonColor.POSITIVE)
     .get_json()
 )
 
