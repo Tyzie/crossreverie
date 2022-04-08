@@ -100,6 +100,19 @@ class Player():
         cur.execute(f"UPDATE users SET nickname='{nick}' WHERE uid='{id}'")
         db.commit()
 
+    def silver_gold(id, numb):
+        db = ps.connect(DB_URI, sslmode="require")
+        cur = db.cursor()
+        cur.execute(f"SELECT silver FROM users WHERE uid='{id}'")
+        i = cur.fetchone()
+        if i[0] >= float(numb):
+            x = float(numb)/100
+            cur.execute(f"UPDATE users SET gold=gold+'{x}' WHERE uid='{id}'")
+            cur.execute(f"UPDATE users SET silver=silver-'{numb}' WHERE uid='{id}'")
+            db.commit()
+        if i[0] < float(numb):
+            return False
+
     def bronze_silver(id, numb):
         db = ps.connect(DB_URI, sslmode="require")
         cur = db.cursor()

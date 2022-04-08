@@ -32,9 +32,11 @@ async def converter(message: Message):
 			Обменник валют - здесь ты можешь обменять нужную тебе валюту на другую
 			-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 			1 ⬜ = 100 🟧
+			1 🟨 = 100 ⬜
 			-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 			Доступные команды:
 			🟧 в ⬜ [колличество]
+			⬜ в 🟨 [колличество]
 			""", keyboard=convkeyb)
 		Player.set_action(player.uid, "conv")
 		print(f"{player.nickname} [{player.uid}] called 'converter'")
@@ -43,9 +45,11 @@ async def converter(message: Message):
 			Обменник валют - здесь ты можешь обменять нужную тебе валюту на другую
 			-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 			1 ⬜ = 100 🟧
+			1 🟨 = 100 ⬜
 			-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 			Доступные команды:
 			🟧 в ⬜ [колличество]
+			⬜ в 🟨 [колличество]
 			""", keyboard=EMPTY_KEYBOARD)
 		Player.set_action(player.uid, "conv")
 		print(f"{player.nickname} [{player.uid}] called 'converter'")
@@ -69,6 +73,27 @@ async def bronze_silver(message: Message, numb=100):
 		if i == False:
 			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает меди 🟧 для обмена! ❌", keyboard=EMPTY_KEYBOARD)
 		print(f"{player.nickname} [{player.uid}] called 'bronze_silver' numb: {numb}")
+		Player.set_action(player.uid, "main")
+
+@cog.on.message(text=["⬜ в 🟨 <numb>", "⬜ в 🟨"])
+async def silver_gold(message: Message, numb=100):
+	user = await cog.api.users.get(message.from_id)
+	player = Player.get_profile(user[0].id)
+	if player != False and player.action == "conv" and player.keyb == 1:
+		i = Player.silver_gold(player.uid, numb)
+		if i != False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты обменял {numb} ⬜ в золото 🟨!", keyboard=mainkeyb)
+		if i == False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает серебра ⬜ для обмена! ❌", keyboard=mainkeyb)
+		Player.set_action(player.uid, "main")
+		print(f"{player.nickname} [{player.uid}] called 'silver_gold' numb: {numb}")
+	if player != False and player.action == "conv" and player.keyb == 0:
+		i = Player.silver_gold(player.uid, numb)
+		if i != False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], ты обменял {numb} ⬜ в золото 🟨!", keyboard=EMPTY_KEYBOARD)
+		if i == False:
+			await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], тебе нехватает серебра ⬜ для обмена! ❌", keyboard=EMPTY_KEYBOARD)
+		print(f"{player.nickname} [{player.uid}] called 'silver_gold' numb: {numb}")
 		Player.set_action(player.uid, "main")
 
 @cog.on.message(text=["работы"])
