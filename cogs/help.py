@@ -17,6 +17,7 @@ async def help(message: Message):
 &#12288;👤 Ник [новый ник]
 &#12288;💼 Заработок
 &#12288;😄 Развлечения
+&#12288;🔰 Информация
 """, keyboard=mainkeyb)
 		Player.set_action(player.uid, "main")
 		print(f"{player.nickname} [{player.uid}] called 'help'")
@@ -28,6 +29,7 @@ async def help(message: Message):
 &#12288;👤 Ник [новый ник]
 &#12288;💼 Заработок
 &#12288;😄 Развлечения
+&#12288;🔰 Информация
 """, keyboard=EMPTY_KEYBOARD)
 		Player.set_action(player.uid, "main")
 		print(f"{player.nickname} [{player.uid}] called 'help'")
