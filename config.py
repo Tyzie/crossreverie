@@ -25,7 +25,7 @@ mainkeyb = (
 )
 
 setkeyb = (
-    Keyboard(inline=True)
+    Keyboard(one_time=True, inline=False)
     .add(Text("Клавиатура вкл"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Клавиатура выкл"), color=KeyboardButtonColor.NEGATIVE)
     .row()
@@ -45,7 +45,7 @@ earnkeyb = (
     .get_json()
 )
 convkeyb = (
-    Keyboard(inline=True)
+    Keyboard(one_time=True, inline=False)
     .add(Text("🟧 в ⬜ 100"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("⬜ в 🟨 100"), color=KeyboardButtonColor.POSITIVE)
     .row()
@@ -53,13 +53,15 @@ convkeyb = (
     .get_json()
 )
 jobskeyb = (
-    Keyboard(inline=True)
+    Keyboard(one_time=True, inline=False)
     .add(Text("Уборщик"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Продавец"), color=KeyboardButtonColor.POSITIVE)
+    .row()
+    .add(Text("Меню"), color=KeyboardButtonColor.PRIMARY)
     .get_json()
     )
 choicekeyb = (
-    Keyboard(inline=True)
+    Keyboard(one_time=True, inline=False)
     .add(Text("Да"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Нет"), color=KeyboardButtonColor.NEGATIVE)
     .row()
@@ -68,7 +70,7 @@ choicekeyb = (
     )
 
 entkeyb = (
-    Keyboard(inline=True)
+    Keyboard(one_time=True, inline=False)
     .add(Text("Казино"), color=KeyboardButtonColor.NEGATIVE)
     .add(Text("Путешествия"), color=KeyboardButtonColor.NEGATIVE)
     .row()
