@@ -28,6 +28,8 @@ setkeyb = (
     Keyboard(inline=True)
     .add(Text("Клавиатура вкл"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Клавиатура выкл"), color=KeyboardButtonColor.NEGATIVE)
+    .row()
+    .add(Text("Меню"), color=KeyboardButtonColor.PRIMARY)
     .get_json()
 )
 
@@ -46,6 +48,8 @@ convkeyb = (
     Keyboard(inline=True)
     .add(Text("🟧 в ⬜ 100"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("⬜ в 🟨 100"), color=KeyboardButtonColor.POSITIVE)
+    .row()
+    .add(Text("Меню"), color=KeyboardButtonColor.PRIMARY)
     .get_json()
 )
 jobskeyb = (
@@ -58,6 +62,8 @@ choicekeyb = (
     Keyboard(inline=True)
     .add(Text("Да"), color=KeyboardButtonColor.POSITIVE)
     .add(Text("Нет"), color=KeyboardButtonColor.NEGATIVE)
+    .row()
+    .add(Text("Меню"), color=KeyboardButtonColor.PRIMARY)
     .get_json()
     )
 
@@ -65,6 +71,8 @@ entkeyb = (
     Keyboard(inline=True)
     .add(Text("Казино"), color=KeyboardButtonColor.NEGATIVE)
     .add(Text("Путешествия"), color=KeyboardButtonColor.NEGATIVE)
+    .row()
+    .add(Text("Меню"), color=KeyboardButtonColor.PRIMARY)
     .get_json()
     )
 
