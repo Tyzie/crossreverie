@@ -38,6 +38,8 @@ earnkeyb = (
     .row()
     .add(Text("Обменник валют"), color=KeyboardButtonColor.PRIMARY)
     .add(Text("Рабы"), color=KeyboardButtonColor.NEGATIVE)
+    .row()
+    .add(Text("Меню"), color=KeyboardButtonColor.PRIMARY)
     .get_json()
 )
 convkeyb = (

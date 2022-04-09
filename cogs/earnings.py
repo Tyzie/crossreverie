@@ -104,14 +104,14 @@ async def jobs(message: Message):
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}], здесь ты можешь подобрать себе работу:
 			=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 			Уборщик | Время: 5 секунд ⌚ | Медь: 1-3 🟧 | Опыт: 0-1 ⭐
-			Продавец | Время: 10 секунд ⌚ | Медь: 1-5 🟧 | Опыт 0-2 ⭐""", keyboard=jobskeyb)
+			Продавец | Время: 10 секунд ⌚ | Медь: 1-5 🟧 | Опыт 0-2 ⭐ | Требуется 3 уровень ⭐""", keyboard=jobskeyb)
 		Player.set_action(player.uid, "jobs")
 		print(f"{player.nickname} [{player.uid}] called 'jobs'")
 	if player != False and player.action == "earn" and player.keyb == 0:
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}], здесь ты можешь подобрать себе работу:
 			=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 			Уборщик | Время: 5 секунд ⌚ | Медь: 1-3 🟧 | Опыт: 0-1 ⭐
-			Продавец | Время: 10 секунд ⌚ | Медь: 1-5 🟧 | Опыт 0-2 ⭐""", keyboard=EMPTY_KEYBOARD)
+			Продавец | Время: 10 секунд ⌚ | Медь: 1-5 🟧 | Опыт 0-2 ⭐ | Требуется 3 уровень ⭐""", keyboard=EMPTY_KEYBOARD)
 		Player.set_action(player.uid, "jobs")
 		print(f"{player.nickname} [{player.uid}] called 'jobs'")
 
@@ -126,9 +126,11 @@ async def cleaner(message: Message):
 		await asyncio.sleep(4)
 		i = Player.job(player.uid, 1)
 		Player.set_action(player.uid, "cleaner")
+		player = Player.get_profile(user[0].id)
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}], получил: 
 			| Опыт: +{i[0]} ⭐
-			| Медь: +{i[1]} 🟧 
+			| Медь: +{i[1]} 🟧
+			| Общий баланс: {player.copper} 🟧 
 			Продолжить?""", keyboard=choicekeyb)
 	if player != False and player.action == "jobs" and player.keyb == 0:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], взял в руки метлу 🧹")
@@ -137,16 +139,18 @@ async def cleaner(message: Message):
 		await asyncio.sleep(4)
 		i = Player.job(player.uid, 1)
 		Player.set_action(player.uid, "cleaner")
+		player = Player.get_profile(user[0].id)
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}], получил: 
 			| Опыт: +{i[0]} ⭐
-			| Медь: +{i[1]} 🟧 
+			| Медь: +{i[1]} 🟧
+			| Общий баланс: {player.copper} 🟧 
 			Продолжить?""", keyboard=EMPTY_KEYBOARD)
 
 @cog.on.message(text=["продавец"])
 async def salesman(message: Message):
 	user = await cog.api.users.get(message.from_id)
 	player = Player.get_profile(user[0].id)
-	if player != False and player.action == "jobs" and player.keyb == 1:
+	if player != False and player.action == "jobs" and player.keyb == 1 and player.level >= 3:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], встал на рабочее место 🏪")
 		await asyncio.sleep(5)
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], пробил продукты 🍉")
@@ -156,11 +160,13 @@ async def salesman(message: Message):
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], отдал сдачу 💵")
 		i = Player.job(player.uid, 2)
 		Player.set_action(player.uid, "salesman")
+		player = Player.get_profile(user[0].id)
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}] получил: 
 			| Опыт: +{i[0]} ⭐
-			| Медь: +{i[1]} 🟧 
+			| Медь: +{i[1]} 🟧
+			| Общий баланс: {player.copper} 🟧 
 			Продолжить?""", keyboard=choicekeyb)
-	if player != False and player.action == "jobs" and player.keyb == 0:
+	if player != False and player.action == "jobs" and player.keyb == 0 and player.level >= 3:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], встал на рабочее место 🏪")
 		await asyncio.sleep(5)
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], пробил продукты 🍉")
@@ -170,10 +176,18 @@ async def salesman(message: Message):
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], отдал сдачу 💵")
 		i = Player.job(player.uid, 2)
 		Player.set_action(player.uid, "salesman")
+		player = Player.get_profile(user[0].id)
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}] получил: 
 			| Опыт: +{i[0]} ⭐
-			| Медь: +{i[1]} 🟧 
+			| Медь: +{i[1]} 🟧
+			| Общий баланс: {player.copper} 🟧 
 			Продолжить?""", keyboard=EMPTY_KEYBOARD)
+	if player != False and player.action == "jobs" and player.keyb == 1 and player.level < 3:
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], твой уровень {player.level}, а требуется 3 уровень! ❌", keyboard=mainkeyb)
+		Player.set_action(player.uid, "main")
+	if player != False and player.action == "jobs" and player.keyb == 0 and player.level < 3:
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], твой уровень {player.level}, а требуется 3 уровень! ❌", keyboard=EMPTY_KEYBOARD)
+		Player.set_action(player.uid, "main")
 
 @cog.on.message(text=["да"])
 async def choice_yes(message: Message):
@@ -186,9 +200,11 @@ async def choice_yes(message: Message):
 		await asyncio.sleep(4)
 		i = Player.job(player.uid, 1)
 		Player.set_action(player.uid, "cleaner")
+		player = Player.get_profile(user[0].id)
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}] получил: 
 			| Опыт: +{i[0]} ⭐
 			| Медь: +{i[1]} 🟧 
+			| Общий баланс: {player.copper} 🟧
 			Продолжить?""", keyboard=choicekeyb)
 	if player != False and player.action == "cleaner" and player.keyb == 0:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}] взял в руки метлу 🧹")
@@ -197,9 +213,11 @@ async def choice_yes(message: Message):
 		await asyncio.sleep(4)
 		i = Player.job(player.uid, 1)
 		Player.set_action(player.uid, "cleaner")
+		player = Player.get_profile(user[0].id)
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}] получил: 
 			| Опыт: +{i[0]} ⭐
 			| Медь: +{i[1]} 🟧 
+			| Общий баланс: {player.copper} 🟧
 			Продолжить?""", keyboard=EMPTY_KEYBOARD)
 	if player != False and player.action == "salesman" and player.keyb == 1:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], встал на рабочее место 🏪")
@@ -211,9 +229,11 @@ async def choice_yes(message: Message):
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], отдал сдачу 💵")
 		i = Player.job(player.uid, 2)
 		Player.set_action(player.uid, "salesman")
+		player = Player.get_profile(user[0].id)
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}] получил: 
 			| Опыт: +{i[0]} ⭐
 			| Медь: +{i[1]} 🟧 
+			| Общий баланс: {player.copper} 🟧
 			Продолжить?""", keyboard=choicekeyb)
 	if player != False and player.action == "salesman" and player.keyb == 0:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], встал на рабочее место 🏪")
@@ -225,9 +245,11 @@ async def choice_yes(message: Message):
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], отдал сдачу 💵")
 		i = Player.job(player.uid, 2)
 		Player.set_action(player.uid, "salesman")
+		player = Player.get_profile(user[0].id)
 		await message.answer(f"""[id{player.id}|{player.nickname}] [{player.uid}] получил: 
 			| Опыт: +{i[0]} ⭐
 			| Медь: +{i[1]} 🟧 
+			| Общий баланс: {player.copper} 🟧
 			Продолжить?""", keyboard=EMPTY_KEYBOARD)
 
 @cog.on.message(text=["нет"])
