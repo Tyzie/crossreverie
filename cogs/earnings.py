@@ -153,7 +153,7 @@ async def salesman(message: Message):
 	if player != False and player.action == "jobs" and player.keyb == 1 and player.level >= 3:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], встал на рабочее место 🏪")
 		await asyncio.sleep(5)
-		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], пробил продукты 🍉")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], посчитал продукты 🍉")
 		await asyncio.sleep(2)
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], принял оплату 💰")
 		await asyncio.sleep(3)
@@ -169,7 +169,7 @@ async def salesman(message: Message):
 	if player != False and player.action == "jobs" and player.keyb == 0 and player.level >= 3:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], встал на рабочее место 🏪")
 		await asyncio.sleep(5)
-		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], пробил продукты 🍉")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], посчитал продукты 🍉")
 		await asyncio.sleep(2)
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], принял оплату 💰")
 		await asyncio.sleep(3)
@@ -222,7 +222,7 @@ async def choice_yes(message: Message):
 	if player != False and player.action == "salesman" and player.keyb == 1:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], встал на рабочее место 🏪")
 		await asyncio.sleep(5)
-		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], пробил продукты 🍉")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], посчитал продукты 🍉")
 		await asyncio.sleep(2)
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], принял оплату 💰")
 		await asyncio.sleep(3)
@@ -238,7 +238,7 @@ async def choice_yes(message: Message):
 	if player != False and player.action == "salesman" and player.keyb == 0:
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], встал на рабочее место 🏪")
 		await asyncio.sleep(5)
-		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], пробил продукты 🍉")
+		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], посчитал продукты 🍉")
 		await asyncio.sleep(2)
 		await message.answer(f"[id{player.id}|{player.nickname}] [{player.uid}], принял оплату 💰")
 		await asyncio.sleep(3)
